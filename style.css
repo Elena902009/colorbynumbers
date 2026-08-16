@@ -117,3 +117,41 @@ body { overflow-x: hidden; }
   .hint-button { margin-top: 12px; padding: 10px; }
   .tip-card { display: none; }
 }
+
+/* Tablets: use the available axis deliberately so the play screen stays in one viewport. */
+@media (min-width: 701px) and (max-width: 1100px) and (orientation: portrait) {
+  .play-layout { grid-template-columns: minmax(0, 1fr) minmax(205px, 220px); gap: 16px; }
+  .canvas-wrap { padding: 18px; }
+  .controls-panel { padding-top: 5px; }
+}
+
+@media (min-width: 701px) and (max-width: 1100px) and (orientation: landscape) {
+  .app-shell { padding-bottom: 8px; }
+  .play-layout { height: calc(100svh - 178px); min-height: 0; grid-template-columns: minmax(0, 1fr) minmax(240px, 290px); gap: clamp(18px, 3vw, 34px); }
+  .canvas-wrap { display: flex; flex-direction: column; height: 100%; max-height: 100%; min-height: 0; overflow: hidden; padding: 16px; }
+  .puzzle-canvas { flex: 1 1 auto; width: auto; height: 100%; max-width: 100%; min-height: 0; margin-inline: auto; }
+  .zoom-hint { flex: 0 0 auto; margin: 8px 0 0; }
+  .controls-panel { overflow: hidden; padding-top: 0; }
+  .progress-row { padding-bottom: 18px; }
+  .palette-heading { margin-top: 18px; }
+  .color-choice { height: 58px; }
+  .hint-button { margin-top: 14px; }
+}
+
+@media (max-height: 600px) and (orientation: landscape) {
+  .app-shell { padding-bottom: 8px; }
+  .site-header { height: 58px; }
+  .play-view { padding-top: 0; }
+  .play-topline { margin-bottom: 7px; }
+  .play-layout { grid-template-columns: minmax(0, 1fr); gap: 8px; height: auto; }
+  .canvas-wrap { display: flex; flex-direction: column; justify-self: center; width: min(100%, 240px); height: 224px; max-height: 224px; padding: 8px; border-radius: 16px; }
+  .puzzle-canvas { width: auto; height: 100%; max-width: 100%; min-height: 0; margin-inline: auto; }
+  .zoom-hint { display: none; }
+  .controls-panel { max-width: 520px; width: 100%; justify-self: center; padding: 0; }
+  .progress-row, .hint-button, .tip-card { display: none; }
+  .palette-heading { margin: 0 0 7px; }
+  .palette { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px; }
+  .color-choice { height: 38px; border-radius: 9px; }
+  .color-choice::after { inset: 2px; border-radius: 6px; }
+  .color-choice span { width: 20px; height: 20px; font-size: 11px; }
+}
