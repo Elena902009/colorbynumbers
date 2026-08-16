@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#f7f4ed" />
+    <title>Colorby — a tiny coloring ritual</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="site-header">
+        <button class="brand" id="home-button" aria-label="Back to Colorby home">
+          <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+          <span>colorby</span>
+        </button>
+        <div class="header-actions">
+          <button class="icon-button" id="help-button" aria-label="How to play" title="How to play">?</button>
+          <button class="avatar-button" aria-label="Your profile">JD</button>
+        </div>
+      </header>
+
+      <main>
+        <section class="library-view" id="library-view">
+          <div class="intro-grid">
+            <div class="intro-copy">
+              <p class="eyebrow"><span class="eyebrow-dot"></span> your daily reset</p>
+              <h1>Make a little<br /><em>room for color.</em></h1>
+              <p class="intro-text">A tiny, tactile coloring ritual for busy brains. Pick a page, match the numbers, and let the rest get quiet.</p>
+              <button class="primary-button" id="start-button">Play today's pick <span aria-hidden="true">↗</span></button>
+              <div class="micro-proof"><span class="proof-avatars"><i>☻</i><i>✦</i><i>☼</i></span><span>2,408 people colored today</span></div>
+            </div>
+
+            <div class="feature-card" id="featured-card">
+              <div class="feature-card-top"><span>today's page</span><span class="page-count">01 / 06</span></div>
+              <div class="feature-art" aria-label="A preview of a sunlit meadow illustration">
+                <div class="art-sun"></div>
+                <div class="art-cloud art-cloud-one"></div>
+                <div class="art-cloud art-cloud-two"></div>
+                <div class="art-hill art-hill-back"></div>
+                <div class="art-hill art-hill-front"></div>
+                <div class="art-flower flower-one"><span></span></div>
+                <div class="art-flower flower-two"><span></span></div>
+                <div class="art-flower flower-three"><span></span></div>
+                <span class="art-number n-one">2</span><span class="art-number n-two">3</span><span class="art-number n-three">1</span>
+                <div class="feature-sticker">slow<br />mornings</div>
+              </div>
+              <div class="feature-card-bottom"><div><strong>Sunlit meadow</strong><span>6 colors · 12 min</span></div><button class="round-arrow" id="feature-play" aria-label="Play Sunlit meadow">↗</button></div>
+            </div>
+          </div>
+
+          <div class="section-heading"><div><p class="eyebrow">browse the little things</p><h2>Choose your mood</h2></div><button class="text-button" id="shuffle-button">Shuffle <span>↻</span></button></div>
+          <div class="mood-row" id="mood-row" role="tablist" aria-label="Coloring page moods">
+            <button class="mood-chip active" data-mood="All" role="tab">All pages</button>
+            <button class="mood-chip" data-mood="Nature" role="tab">Nature</button>
+            <button class="mood-chip" data-mood="Small joys" role="tab">Small joys</button>
+            <button class="mood-chip" data-mood="Animals" role="tab">Animals</button>
+          </div>
+          <div class="page-grid" id="page-grid"></div>
+
+          <div class="source-note"><span class="source-dot"></span><span>Sample artwork is fetched from <a href="https://github.com/twitter/twemoji" target="_blank" rel="noreferrer">Twemoji on GitHub</a>, CC-BY 4.0. The interactive page above is original MVP art.</span></div>
+        </section>
+
+        <section class="play-view" id="play-view" hidden>
+          <div class="play-topline"><button class="back-button" id="back-button"><span>←</span> library</button><div class="play-title"><span class="live-dot"></span><span id="play-page-name">Sunlit meadow</span></div><button class="reset-button" id="reset-button">Reset</button></div>
+          <div class="play-layout">
+            <div class="canvas-wrap">
+              <div class="canvas-badge"><span>page</span><strong id="play-page-number">01</strong></div>
+              <svg id="puzzle-canvas" class="puzzle-canvas" viewBox="0 0 360 420" role="img" aria-label="Color by numbers puzzle"></svg>
+              <div class="zoom-hint"><span>✦</span> tap a shape to fill it</div>
+            </div>
+            <aside class="controls-panel">
+              <div class="progress-row"><div><span class="eyebrow">your progress</span><strong><span id="filled-count">0</span><small> / <span id="total-count">0</span> shapes</small></strong></div><div class="progress-ring" id="progress-ring"><span id="progress-percent">0%</span></div></div>
+              <div class="palette-heading"><span class="eyebrow">choose a number</span><span class="selected-label" id="selected-label">color 2 selected</span></div>
+              <div class="palette" id="palette" role="radiogroup" aria-label="Color numbers"></div>
+              <button class="hint-button" id="hint-button"><span>✦</span><span><strong>Need a nudge?</strong><small>Reveal one matching shape</small></span><span class="hint-arrow">→</span></button>
+              <div class="tip-card"><span class="tip-icon">☼</span><p><strong>Little tip</strong><br />Zoom with two fingers or use the number buttons. There are no wrong ways to slow down.</p></div>
+            </aside>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <div class="modal-backdrop" id="help-modal" hidden><div class="help-modal" role="dialog" aria-modal="true" aria-labelledby="help-title"><button class="modal-close" id="close-help" aria-label="Close help">×</button><span class="modal-spark">✦</span><p class="eyebrow">three tiny steps</p><h2 id="help-title">How to play</h2><div class="help-step"><span>01</span><p><strong>Pick a color</strong><br />Tap a numbered swatch in the palette below the page.</p></div><div class="help-step"><span>02</span><p><strong>Find its shapes</strong><br />Tap any shape with that number. On mobile, the page is made for thumbs.</p></div><div class="help-step"><span>03</span><p><strong>Take the win</strong><br />Finish every shape, then enjoy your tiny masterpiece.</p></div><button class="primary-button modal-button" id="got-it-button">Got it <span>↗</span></button></div></div>
+    <div class="completion-backdrop" id="completion-modal" hidden><div class="completion-modal"><div class="completion-confetti">✦　✧　✦</div><p class="eyebrow">page complete</p><h2>That felt good.</h2><p>You gave <strong id="completion-page-name">Sunlit meadow</strong> a little life. Keep the quiet going?</p><button class="primary-button" id="continue-button">Choose another page <span>↗</span></button></div></div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
