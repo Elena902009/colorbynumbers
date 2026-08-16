@@ -3,7 +3,7 @@ const TWEMOJI = 'https://raw.githubusercontent.com/twitter/twemoji/master/assets
 const galleryPages = [
   { id: 'butterfly', title: 'Flutter by', meta: 'Small joys · 8 min', mood: 'Small joys', image: `${TWEMOJI}1f98b.svg`, bg: '#efeaff' },
   { id: 'sunflower', title: 'Good light', meta: 'Nature · 10 min', mood: 'Nature', image: `${TWEMOJI}1f33c.svg`, bg: '#fff0c9' },
-  { id: 'dog', title: 'Best friend', meta: 'Animals · 12 min', mood: 'Animals', image: `${TWEMOJI}1f436.svg`, bg: '#e2f1ec' },
+  { id: 'dog', title: 'Best friend', meta: 'Animals · 12 min', mood: 'Animals', image: `${TWEMOJI}1f431.svg`, bg: '#e2f1ec' },
   { id: 'snail', title: 'Take it slow', meta: 'Nature · 7 min', mood: 'Nature', image: `${TWEMOJI}1f40c.svg`, bg: '#fce6dd' },
   { id: 'sparkle', title: 'Tiny magic', meta: 'Small joys · 5 min', mood: 'Small joys', image: `${TWEMOJI}2728.svg`, bg: '#e8e5fb' },
   { id: 'cat', title: 'Soft landing', meta: 'Animals · 11 min', mood: 'Animals', image: `${TWEMOJI}1f431.svg`, bg: '#f4e6ef' },
